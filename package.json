@@ -1,0 +1,30 @@
+{
+  "name": "cse341-w3",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/kylebowser/cse341-w3#readme",
+  "bugs": {
+    "url": "https://github.com/kylebowser/cse341-w3/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylebowser/cse341-w3.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mongodb": "^7.2.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^10.4.0",
+    "swagger-autogen": "^2.23.7"
+  }
+}

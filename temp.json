@@ -1,0 +1,11 @@
+{
+    "book": {
+        "name": "Jane",
+        "authorName": "Smith",
+        "genre": "jane.smith@example.com",
+        "pageCount": "pink",
+        "price": "2020-01-01",
+        "publisher": "2020-01-01",
+        "publicationDate": "2020-01-01"
+    }
+}
