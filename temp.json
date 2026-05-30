@@ -1,11 +1,28 @@
 {
     "book": {
-        "name": "Jane",
+        "name": "Book Jane",
         "authorName": "Smith",
-        "genre": "jane.smith@example.com",
-        "pageCount": "pink",
-        "price": "2020-01-01",
-        "publisher": "2020-01-01",
+        "genre": "Horror",
+        "pageCount": 300,
+        "price": 19.99,
+        "publisher": "Example Publisher",
         "publicationDate": "2020-01-01"
+    },
+
+    "book2": {
+        "name": "Book John",
+        "authorName": "Smithy",
+        "genre": "Adventure",
+        "pageCount": 320,
+        "price": 19.00,
+        "publisher": "Example Publisher1",
+        "publicationDate": "2021-02-02"
+    },
+
+    "name": {
+        "name": "John Doe",
+        "checkedOut": "1"
     }
 }
+
+

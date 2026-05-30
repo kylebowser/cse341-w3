@@ -17,7 +17,7 @@ app
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
   })
-  .use('/', base);
+ // .use('/', base);
 
 process.on('uncaughtException', (err, origin) => {
     console.log(process.stderr.fd, `Caught exception: ${err}\n` + `Exception origin: ${origin}`);
@@ -27,9 +27,11 @@ mongodb.initDb((err, mongodb) => {
   if (err) {
     console.log(err);
   } else {
+    app.use('/', base);
+    app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
     app.listen(port);
     console.log(`Connected to DB and listening on ${port}`);
   }
 });
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
+//app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
