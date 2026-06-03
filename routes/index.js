@@ -1,28 +1,40 @@
-const routes = require('express').Router();
-const bookControl = require('../controllers/bookControl');
-const userControl = require('../controllers/userControl');
-const validation = require('../middleware/validate');
+const routes = require("express").Router();
+const bookControl = require("../controllers/bookControl");
+const userControl = require("../controllers/userControl");
+const validation = require("../middleware/validate");
+const auth = require("../middleware/authenticate.js");
 
-routes.get('/', bookControl.getData);
+routes.get("/login", passport.authenticate("github"), (req, res) => {});
 
-routes.get('/books', bookControl.getAll);
+routes.get("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+});
 
-routes.get('/books/:id', bookControl.getSingle);
+routes.get("/", bookControl.getData);
 
-routes.post('/books', validation.saveBook, bookControl.createBook);
+routes.get("/books", bookControl.getAll);
 
-routes.put('/books/:id', validation.saveBook, bookControl.updateBook);
+routes.get("/books/:id", bookControl.getSingle);
 
-routes.delete('/books/:id', bookControl.deleteBook);
+routes.post("/books", auth, validation.saveBook, bookControl.createBook);
 
-routes.get('/users', userControl.getAll);
+routes.put("/books/:id", auth, validation.saveBook, bookControl.updateBook);
 
-routes.get('/users/:id', userControl.getSingle);
+routes.delete("/books/:id", auth, bookControl.deleteBook);
 
-routes.post('/users', validation.saveUser, userControl.createUser);
+routes.get("/users", userControl.getAll);
 
-routes.put('/users/:id', validation.saveUser, userControl.updateUser);
+routes.get("/users/:id", userControl.getSingle);
 
-routes.delete('/users/:id', userControl.deleteUser);
+routes.post("/users", auth, validation.saveUser, userControl.createUser);
+
+routes.put("/users/:id", auth, validation.saveUser, userControl.updateUser);
+
+routes.delete("/users/:id", auth, userControl.deleteUser);
 
 module.exports = routes;
