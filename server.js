@@ -39,8 +39,8 @@ app
     next();
   })
   .use(cors({ methods: ["GET", "POST", "PUT", "UPDATE", "PATCH", "DELETE"] }))
-  .use(cors({ origin: "*" }))
-  .use("/", require("./routes/index.js"));
+  .use(cors({ origin: "*" }));
+//.use("/", require("./routes/index.js"));
 
 passport.use(
   new GithubStrategy(
@@ -96,7 +96,7 @@ mongodb.initDb((err, mongodb) => {
   if (err) {
     console.log(err);
   } else {
-    //app.use("/", base);
+    app.use("/", base);
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
     app.listen(port);
     console.log(`Connected to DB and listening on ${port}`);
