@@ -3,6 +3,8 @@ const bookControl = require("../controllers/bookControl");
 const userControl = require("../controllers/userControl");
 const validation = require("../middleware/validate");
 const auth = require("../middleware/authenticate.js");
+const passport = require("passport");
+const GithubStrategy = require("passport-github2").Strategy;
 
 routes.get("/login", passport.authenticate("github"), (req, res) => {});
 

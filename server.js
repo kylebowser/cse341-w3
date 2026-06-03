@@ -8,7 +8,7 @@ const swaggerFile = require("./swagger_output.json");
 const swaggerUi = require("swagger-ui-express");
 const passport = require("passport");
 const session = require("express-session");
-const GithubStrategy = require("passport-github").Strategy;
+const GithubStrategy = require("passport-github2").Strategy;
 const cors = require("cors");
 
 const port = process.env.PORT || 3000;
@@ -96,7 +96,7 @@ mongodb.initDb((err, mongodb) => {
   if (err) {
     console.log(err);
   } else {
-    app.use("/", base);
+    //app.use("/", base);
     app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerFile));
     app.listen(port);
     console.log(`Connected to DB and listening on ${port}`);
