@@ -42,13 +42,6 @@ app
   .use(cors({ origin: "*" }))
   .use("/", require("./routes/index.js"));
 
-process.on("uncaughtException", (err, origin) => {
-  console.log(
-    process.stderr.fd,
-    `Caught exception: ${err}\n` + `Exception origin: ${origin}`,
-  );
-});
-
 passport.use(
   new GithubStrategy(
     {
@@ -63,6 +56,13 @@ passport.use(
     },
   ),
 );
+
+process.on("uncaughtException", (err, origin) => {
+  console.log(
+    process.stderr.fd,
+    `Caught exception: ${err}\n` + `Exception origin: ${origin}`,
+  );
+});
 
 passport.serializeUser((user, done) => {
   done(null, user);
