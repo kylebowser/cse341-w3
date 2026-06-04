@@ -6,7 +6,9 @@ const auth = require("../middleware/authenticate.js");
 const passport = require("passport");
 const GithubStrategy = require("passport-github2").Strategy;
 
-routes.get("/login", passport.authenticate("github"), (req, res) => {});
+routes.get("/login", passport.authenticate("github"));
+
+//, (req, res) => {}
 
 routes.get("/logout", function (req, res, next) {
   req.logout(function (err) {
